@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: github.event.repository.name != 'koseproggevent-template'
 
     steps:
       - uses: actions/checkout@v3
