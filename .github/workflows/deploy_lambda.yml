@@ -12,8 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: cd src && zip -r index.zip .
-      - run: ls
-      - run: ls src
       - name: Deploy source code
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

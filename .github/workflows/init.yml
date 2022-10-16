@@ -8,9 +8,10 @@ on:
 jobs:
   initialize:
     runs-on: ubuntu-latest
+    if: github.event.repository.name != 'koseproggevent-template'
     steps:
       - initialize:
-        - name: THIS IS FOR TEMPLATE Get funciton url
+        - name: Get funciton url
           env:
             AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
             AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
