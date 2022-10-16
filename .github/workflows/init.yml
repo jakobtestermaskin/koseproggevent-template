@@ -1,9 +1,8 @@
 name: "Initialize repository"
 
 on: 
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: * * * * *
 
 jobs:
   initialize:
@@ -17,5 +16,8 @@ jobs:
           AWS_DEFAULT_REGION: "eu-west-1"
           GROUP_NAME: ${{ github.event.repository.name }}
         run: |
-          FUNCTION_URL=$(GROUP=$(echo $GROUP_NAME | cut -d '-' -f 1) && aws lambda get-function-url-config --function-name koseproggevent-$GROUP-implementation | jq .FunctionUrl)
-          echo $FUNCTION_URL
+          FUNCTION_URL=$(GROUP=$(echo $GROUP_NAME | cut -d '-' -f 1) && aws lambda get-function-url-config --function-name koseproggevent-$GROUP-implementation | jq .FunctionUrl
+          NAME_PREFIX="$(echo "$GROUP_NAME" | cut -d'-' -f1)"
+          sed -i "s/<name-prefix>/$NAME_PREFIX/g" README.md
+          sed -i "s/<function-name>/$FUNCTION_NAME/g" README.md
+          rm .github/workflows/init.yml
