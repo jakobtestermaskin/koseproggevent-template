@@ -1,6 +1,7 @@
 name: "Initialize repository"
 
 on: 
+  push:
   schedule:
     - cron: '* * * * *'
 
@@ -31,4 +32,4 @@ jobs:
           git config --local user.name "GitHub Action"
           git add .
           git commit --amend --no-edit
-          git push --force
+      # git push --force
