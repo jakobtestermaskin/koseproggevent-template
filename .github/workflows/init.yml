@@ -24,7 +24,7 @@ jobs:
           NAME_PREFIX="$(echo "$GROUP_NAME" | cut -d'-' -f1)"
           echo $FUNCTION_URL
           sed -i "s/<name-prefix>/$NAME_PREFIX/g" README.md
-          sed -i "s/<function-name>/$FUNCTION_NAME/g" README.md
+          sed -i "s/<function-name>/$FUNCTION_URL/g" README.md
           rm .github/workflows/init.yml
       - name: Push
         run: |
