@@ -1,4 +1,14 @@
+const handle = require("handle")
+
+
 exports.handler = async function (event, context) {
-    console.log("I just got ziped!")
-    return { statusCode: 200, body: { nextMove: "(1, 1)" } }
+
+    const body = handle.nextMove()
+
+    return {
+        statusCode: 200,
+        body: {
+            move: JSON.stringify(body)
+        }
+    }
 }
