@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.event.repository.name != 'koseproggevent-template'
+    if: github.event.repository.name != 'koseproggevent-template-javascript'
 
     steps:
       - uses: actions/checkout@v3
